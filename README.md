@@ -1,4 +1,4 @@
-# EDOsolvingPytohn
+# EDOsolvingPython
 un simple programme python pour résoudre des equations différentielle d'ordre 1 via la méthode de Runge Kutta explicite et EulerImplicite
 
 la méthode Runge Kutta a besoin d'une matrice de coeficient A et de deux vecteurs a,b pour fonctionner, avec bien sur l'équation differentielle
