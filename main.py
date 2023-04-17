@@ -83,13 +83,14 @@ a=np.array([[0,0,0,0],
 b=np.array([1/6,2/6,2/6,1/6])
 c=np.array([0,1/2,1/2,1])
 
+
+#coefficient for the testing system
 #sys1
 #"""
 alpha=1
 beta=1/20
 delta=1/200
 gamma=1/2
-
 
 """
 #sys2
@@ -111,7 +112,7 @@ debut=10
 fin=30
 A=0.25
 
-
+#testing system
 
 def sys1(x,t):
   return np.array([x[0]*(alpha-beta*x[1])
@@ -144,50 +145,29 @@ def chasse(t):
         out=out-A*(np.sin(np.pi*((t-debut)/(fin-debut)))**(2))
     return out
 
-#test
-def exp(x,t):
-  return x
-
-
-
-#(x,t)=RungeKuttaSim(a,b,c,np.array([1,2,2]),0,sys2,0.05,20,True)
-
-
 """
 (x,t)=EulerImpliciteSim(np.array([80,30]),0,sys1,derSys1,0.01,5,50,True)
 plt.plot(t,[i[0] for i in x])
 plt.plot(t,[i[1] for i in x])
 #plt.plot(t,[i[2] for i in x])
-plt.title("Système 2 Euler Implicite")
-#"""#"""
+plt.title("Système 2 Euler Implicite système 1")
+#"""
 (x1,t1)=RungeKuttaSim(a,b,c,np.array([100,10]),0,guerreMondiale,0.001,60,True)
 
 plt.plot(t1,[i[0] for i in x1])
 plt.plot(t1,[i[1] for i in x1])
 plt.plot(t1,[90*chasse(i) for i in t1])
 plt.plot(t1,[8*i[0]/i[1] for i in x1])
-#plt.plot(t1,[i[2] for i in x1])
-#"""
 plt.title("chasse sur les proies")
 plt.legend(["proie","predateur","chasse (pas à l'échelle)","rapport proie/prédateur (pas à l'échelle)"])
 """
+plt.title("surchasse sur les proies")
 (x1,t1)=RungeKuttaSim(a,b,c,np.array([100,20]),0,sysCustom,0.001,60,True)
 plt.xlabel('Prédateur')
 plt.ylabel('Proie')
 plt.plot([i[1] for i in x1],[i[0] for i in x1])
 #"""
-#plt.title("Système 1 Euler Implicite")
-"""
-for j in range(20):
-    (x1,t1)=RungeKuttaSim(a,b,c,np.array([100,20+j]),0,sys1,0.01,50,True)
-    plt.plot([i[1] for i in x1],[i[0] for i in x1],color="#5999e0")
-    plt.text(x1[1][1], x1[1][0], str(20+j))
-    plt.title("Système 1")
 
-
-#plt.legend(["Euler Implicite","RungeKutta"])
-#"""
-#plt.plot(t,[i[2] for i in x])
 plt.grid(which='major', linestyle='-')
 plt.grid(which='minor', linestyle='--',linewidth=0.3)
 plt.minorticks_on()
